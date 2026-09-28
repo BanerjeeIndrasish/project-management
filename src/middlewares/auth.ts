@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { verifyToken } from "../utils/jwt";
 
 
-export function authenticate(req: Request, res: Response, next: NextFunction) {    
+export function authenticate(req: Request, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization;
     if (!authHeader) return res.status(401).json({ status: false, error: "No token provided" });
 
@@ -28,3 +28,15 @@ export function authorize(...allowedRoles: string[]) {
         next();
     };
 }
+
+export function restrictAgentChat(req: any, res: Response, next: NextFunction) {
+    // Assuming authenticate middleware sets req.user.role_code
+    if (req.user?.role_code === "GUEST") {
+        return res.status(403).json({
+            status: false,
+            message: "Guest users are not allowed to access Agent Chat."
+        });
+    }
+    next();
+}
+
