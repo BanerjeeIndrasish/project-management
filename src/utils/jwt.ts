@@ -9,7 +9,7 @@ function getSecret(): string {
 }
 
 export function issueToken(userId: number, roleCode: string) {
-    return jwt.sign({ userId, role_code: roleCode }, getSecret(), { expiresIn: "1h" });
+    return jwt.sign({ userId, role_code: roleCode }, getSecret(), { expiresIn: roleCode == 'guest' ? '30m' : "1h" });
 }
 
 export function verifyToken(token: string) {

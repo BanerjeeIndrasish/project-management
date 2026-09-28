@@ -1,7 +1,10 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import app from "./app";
 
-const PORT = 5000;
+const PORT = process.env.DB_PORT;
+const BASE_URL = process.env.BASE_URL;
 
 app.listen(PORT, () => {
-  console.log(`DevFlow backend running on http://localhost:${PORT}`);
+  console.log(`DevFlow backend running on ${BASE_URL}:${PORT ?? 5000}`);
 });

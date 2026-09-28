@@ -28,8 +28,8 @@ export async function createProject(req: Request, res: Response) {
 
 export async function updateProject(req: Request, res: Response) {
     const id = Number(req.params.id);
-    const { name, description, status } = req.body;
-    const result = await projectService.updateProject(id, name, description, status);
+    const { name, description, status, created_by } = req.body;
+    const result = await projectService.updateProject(id, name, description, status, created_by);
     res.json({ status: true, data: result });
 }
 
