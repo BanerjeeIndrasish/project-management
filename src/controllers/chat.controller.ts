@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { callLLM } from "../services/ai.service";
-import { processHRMSAgentMessage } from '../tool-services/agent.services';
 import { db } from '../configs/db';
 import { ai } from '../app';
+import { processAgentMessage } from '../tool-services/agent.services';
 
 export async function chatLLM(req: Request, res: Response) {
     try {
@@ -38,7 +38,7 @@ export async function handleHRMSChat(req: Request, res: Response) {
             return res.status(400).json({ status: false, message: "Message prompt cannot be empty." });
         }
 
-        const aiResult = await processHRMSAgentMessage(prompt);
+        const aiResult = await processAgentMessage(prompt);
 
         // Check if Tool Execution was triggered
 

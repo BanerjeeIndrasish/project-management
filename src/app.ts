@@ -68,5 +68,3 @@ app.listen(DB_PORT, async () => {
         console.error("Troubleshooting: Please ensure XAMPP Control Panel is open and MySQL is turned green.");
     }
 });
-
-export default app;
