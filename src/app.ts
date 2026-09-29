@@ -20,7 +20,7 @@ import dashboardRoutes from "./routes/dashboard.route"
 
 const DB_PORT = process.env.DB_PORT;
 
-const app = express();
+export const app = express();
 app.use(express.json());
 
 export const ai = new GoogleGenAI();
