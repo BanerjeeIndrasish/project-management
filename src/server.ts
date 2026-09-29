@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
+import app from './app';
 dotenv.config();
-import app from "./app";
 
 const PORT = process.env.DB_PORT;
 const BASE_URL = process.env.BASE_URL;

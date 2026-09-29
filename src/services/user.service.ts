@@ -26,7 +26,7 @@ export async function createUser(
 
 export async function findUserByEmail(email: string) {
     const [rows] = await db.query<UserWithRole[]>(
-        `SELECT u.id, u.email, u.password, r.role_code
+        `SELECT u.id, u.email, u.password, r.role_code, u.name
          FROM users u
          JOIN roles r ON u.role_id = r.id
          WHERE u.email = ?`,

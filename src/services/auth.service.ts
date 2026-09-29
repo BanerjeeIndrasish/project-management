@@ -23,7 +23,7 @@ export async function loginUser(email: string, plainPassword: string) {
     if (!isValid) throw new Error("Invalid credentials");
 
     const permissions = await getRolePermissions(user.role_code);
-    console.log('Permissions.........', permissions)
+    console.log('Safe user@#$%^&*$#@#$%$#@#$%^&', safeUser)
     const token = issueToken(user.id, user.role_code);
     return { user: safeUser, token, permissions };
 }
